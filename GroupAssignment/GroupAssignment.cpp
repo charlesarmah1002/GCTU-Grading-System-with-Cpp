@@ -2,52 +2,55 @@
 
 using namespace std;
 
-int main()
-{
-    cout << "==GCTU GRADING SYSTEM==" << endl;
+int main() {
+	cout << "== GCTU GRADING SYSTEM ==" << endl;
 
-    int NumberOfCourses;
+	int NumberOfCourses;
 
-    cout << "Enter the number of courses you offer: " << endl;
-    cin >> NumberOfCourses;
+	cout << "Enter the number of courses:" << endl;
+	cin >> NumberOfCourses;
 
-    int TotalScore = 0;
+	int TotalScore = 0, TotalCredit = 0;
 
-    for (int i = 1; i <= NumberOfCourses; i++)
-    {   
-        int score;
-        cout << "What is your test score for course " << i << endl;
+	for (int i = 1; i <= NumberOfCourses; i++)
+	{
+		cout << "What is your grade for course " << i << endl;
 
-        cin >> score;
+		int score;
+		cin >> score;
 
-        if (score < 50) {
-            cout << "Your grade for course " << i << " is F" << endl;
-        }
-        else if (score < 60) {
-            cout << "Your grade for course " << i << " is D" << endl;
-        }
-        else if (score < 70) {
-            cout << "Your grade for course " << i << " is C" << endl;
-        }
-        else if (score < 80) {
-            cout << "Your grade for course " << i << " is B" << endl;
-        }
-        else if (score <= 100) {
-            cout << "Your grade for course " << i << " is A" << endl;
-        }
-        else {
-            cout << "Enter an appropraite score" << endl;
-            break;
-        }
+		int CreditScore;
+		cout << "What is your course credit for course " << i << endl;
+		cin >> CreditScore;
 
-        TotalScore += score;
-    }
+		TotalCredit += CreditScore;
 
-    cout << "Your total score is " << TotalScore << endl;
+		if (score < 50) {
+			cout << "Your grade is F" << endl;
+		}
+		else if (score >= 50 && score < 60) {
+			cout << "Your grade is D" << endl;
+		}
+		else if (score >= 60 && score < 70) {
+			cout << "Your grade is C" << endl;
+		}
+		else if (score >= 70 && score < 80) {
+			cout << "Your grade is B" << endl;
+		}
+		else if (score >= 80 && score <= 100){
+			cout << "Your grade is A" << endl;
+		}
+		else {
+			cout << "Enter a proper score" << endl;
+		}
 
-    double SemesterAverage;
-    SemesterAverage = TotalScore / NumberOfCourses;
+		TotalScore += (score * CreditScore);
+	}
 
-    cout << "Your semester score average is: " << SemesterAverage << endl;
-    cout << "Thank You For Using The GCTU Grading System" << endl;
+	double SemesterAverage = TotalScore / TotalCredit;
+
+	cout << "Your semester average is " << SemesterAverage << endl;
+	cout << "Thank You For Using The GCTU Grading System" << endl;
+
+	return 0;
 }
